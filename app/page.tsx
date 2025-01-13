@@ -1,101 +1,183 @@
+"use client";
 import Image from "next/image";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { siteConfig } from "@/config/site";
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+    <div className="flex flex-col min-h-screen">
+      {/* Hero Section */}
+      <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <motion.div
+          initial={{ scale: 1.1 }}
+          animate={{ scale: 1 }}
+          transition={{ duration: 1.5 }}
+          className="absolute inset-0 z-0"
+        >
+          <Image
+            src={siteConfig.hero.image}
+            alt="Restaurant hero"
+            fill
+            className="object-cover brightness-[0.7]"
+            priority
+          />
+        </motion.div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="relative z-10 text-center px-4"
+        >
+          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white [text-shadow:_2px_2px_10px_rgb(0_0_0_/_90%)]">
+            {siteConfig.hero.title}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto [text-shadow:_1px_1px_2px_rgb(0_0_0_/_60%)] mb-8">
+            {siteConfig.hero.subtitle}
+          </p>
+          <motion.div
+            whileHover={{
+              scale: 1.05,
+            }}
+            whileTap={{ scale: 0.95 }}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <Link
+              href={siteConfig.hero.cta.link}
+              className="btn-primary px-8 py-3 rounded-full text-lg font-semibold inline-block transition-all duration-300 relative after:absolute after:inset-0 after:rounded-full after:border-2 after:border-white/0 hover:after:border-white/100 after:transition-all after:duration-300 hover:text-white"
+            >
+              {siteConfig.hero.cta.text}
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Featured Section */}
+      <section className="py-20 px-4 section-alt">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
           >
-            Read our docs
-          </a>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {siteConfig.specialties.map((item, index) => (
+                <motion.div
+                  key={index}
+                  className="card"
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{
+                    duration: 0.5,
+                    delay: index * 0.1,
+                  }}
+                  whileHover={{
+                    scale: 1.02,
+                    transition: { type: "spring", stiffness: 300 },
+                  }}
+                >
+                  <div className="card-image-container">
+                    <Image
+                      src={item.image}
+                      alt={item.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="card-content">
+                    <h3 className="text-xl font-semibold mb-3 text-textPrimary">
+                      {item.title}
+                    </h3>
+                    <p className="text-textSecondary leading-relaxed">
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-24 px-4 bg-backgroundAlt relative overflow-hidden">
+        {/* Decorative Elements */}
+        <div
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `
+              radial-gradient(circle at 20% 50%, rgba(var(--primary-rgb), 0.1) 0%, transparent 50%),
+              radial-gradient(circle at 80% 50%, rgba(var(--primary-rgb), 0.1) 0%, transparent 50%)
+            `,
+          }}
+        />
+
+        <div className="max-w-7xl mx-auto relative">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl md:text-5xl font-bold text-textPrimary mb-6">
+              Ce Spun Clienții Noștri
+            </h2>
+            <div className="w-20 h-1 bg-primary mx-auto rounded-full" />
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {siteConfig.testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+                className="bg-background rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 relative"
+              >
+                {/* Quote Icon */}
+                <div className="absolute -top-4 right-8 text-4xl text-primary opacity-20">
+                  "
+                </div>
+
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="relative w-16 h-16 rounded-full overflow-hidden">
+                    <Image
+                      src={testimonial.image}
+                      alt={testimonial.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-textPrimary">
+                      {testimonial.name}
+                    </h3>
+                    <p className="text-sm text-primary">{testimonial.role}</p>
+                  </div>
+                </div>
+
+                <p className="text-textSecondary leading-relaxed italic">
+                  "{testimonial.content}"
+                </p>
+
+                {/* Decorative dots */}
+                <div className="absolute bottom-4 right-4 flex gap-1">
+                  {[...Array(3)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="w-1.5 h-1.5 rounded-full bg-primary/20"
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

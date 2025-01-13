@@ -2,20 +2,145 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Variabilele vor fi setate dinamic din JavaScript */
   }
 }
 
+/* Aplicăm culorile la nivel global */
 body {
-  color: var(--foreground);
+  color: var(--textPrimary);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Clase utilitare pentru culorile personalizate */
+.bg-primary {
+  background-color: var(--primary);
+}
+.text-primary {
+  color: var(--primary);
+}
+.border-primary {
+  border-color: var(--primary);
+}
+
+.bg-accent-1 {
+  background-color: var(--accent1);
+}
+.bg-accent-2 {
+  background-color: var(--accent2);
+}
+
+/* Stiluri pentru butoane */
+.btn-primary {
+  background-color: var(--primary);
+  color: var(--background);
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primaryDark);
+  color: white;
+}
+
+/* Stiluri pentru headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--textPrimary);
+}
+
+/* Stiluri pentru link-uri */
+a {
+  color: var(--accent1);
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--primary);
+}
+
+/* Add smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Stiluri pentru secțiuni alternative */
+.section-alt {
+  background-color: var(--backgroundAlt);
+}
+
+/* Stiluri pentru carduri */
+.card {
+  background-color: var(--background);
+  border: 1px solid rgba(var(--textSecondary), 0.1);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  border-color: rgba(var(--primary), 0.3);
+}
+
+.card-image-container {
+  position: relative;
+  height: 250px;
+  overflow: hidden;
+}
+
+.card-image-container img {
+  transition: transform 0.5s ease;
+}
+
+.card:hover .card-image-container img {
+  transform: scale(1.05);
+}
+
+.card-content {
+  padding: 1.5rem;
+  border-top: 1px solid rgba(var(--textSecondary), 0.1);
+  background: linear-gradient(
+    to bottom,
+    var(--background),
+    rgba(var(--backgroundAlt), 0.5)
+  );
+}
+
+/* Adaugă aceste stiluri la sfârșitul fișierului */
+.boxes-con {
+  -moz-column-count: 1;
+  -webkit-column-count: 1;
+  column-count: 1;
+  column-gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .boxes-con {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .boxes-con {
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+    column-count: 3;
+  }
+}
+
+.boxes-con > div {
+  display: inline-block;
+  width: 100%;
 }
