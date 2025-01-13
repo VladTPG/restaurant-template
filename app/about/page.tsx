@@ -119,47 +119,6 @@ export default function About() {
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            <div className="text-center space-y-4">
-              <div className="text-4xl text-primary mb-4">
-                <FaHeart className="mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold text-textPrimary">
-                Pasiune
-              </h3>
-              <p className="text-textSecondary">
-                Punem suflet în fiecare preparat și experiență pe care o creăm
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="text-4xl text-primary mb-4">
-                <FaStar className="mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold text-textPrimary">
-                Calitate
-              </h3>
-              <p className="text-textSecondary">
-                Folosim doar ingrediente premium și tehnici rafinate
-              </p>
-            </div>
-            <div className="text-center space-y-4">
-              <div className="text-4xl text-primary mb-4">
-                <FaUsers className="mx-auto" />
-              </div>
-              <h3 className="text-xl font-semibold text-textPrimary">
-                Tradiție
-              </h3>
-              <p className="text-textSecondary">
-                Păstrăm vie moștenirea culinară de peste două decenii
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Facilities Section */}
       <section className="py-24 px-4 bg-backgroundAlt">
         <div className="max-w-7xl mx-auto">
