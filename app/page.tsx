@@ -146,7 +146,7 @@ export default function Home() {
               >
                 {/* Quote Icon */}
                 <div className="absolute -top-4 right-8 text-4xl text-primary opacity-20">
-                  "
+                  &ldquo;
                 </div>
 
                 <div className="flex items-center gap-4 mb-6">
@@ -167,7 +167,7 @@ export default function Home() {
                 </div>
 
                 <p className="text-textSecondary leading-relaxed italic">
-                  "{testimonial.content}"
+                  &ldquo;{testimonial.content}&rdquo;
                 </p>
 
                 {/* Decorative dots */}
