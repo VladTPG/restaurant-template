@@ -24,7 +24,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-background shadow-lg border border-primary/10 text-primary hover:bg-background-alt transition-colors duration-200"
+      className="fixed bottom-6 right-6 z-50 p-3 rounded-full bg-background shadow-lg  text-primary hover:bg-background-alt transition-colors duration-200"
       aria-label="Toggle theme"
     >
       {theme === "light" ? <FaMoon size={20} /> : <FaSun size={20} />}

@@ -144,3 +144,108 @@ html {
   display: inline-block;
   width: 100%;
 }
+
+/* Menu Page Styles */
+.menu-category {
+  position: relative;
+  background: linear-gradient(
+    to bottom right,
+    var(--background),
+    var(--backgroundAlt)
+  );
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.menu-category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 1rem;
+  border: 1px solid rgba(var(--primary), 0.1);
+  pointer-events: none;
+}
+
+@media (hover: hover) {
+  .menu-category:hover::before {
+    border-color: rgba(var(--primary), 0.3);
+  }
+}
+
+.menu-item-transition {
+  transition: all 0.3s ease;
+}
+
+.menu-item-transition:hover {
+  transform: translateX(8px);
+}
+
+@keyframes slideUpAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRightAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideDownAndFade {
+  from {
+    opacity: 0;
+    transform: translateY(-2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeftAndFade {
+  from {
+    opacity: 0;
+    transform: translateX(2px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+[data-radix-tooltip-content-wrapper] {
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-side="top"] {
+  animation-name: slideDownAndFade;
+}
+
+[data-side="right"] {
+  animation-name: slideLeftAndFade;
+}
+
+[data-side="bottom"] {
+  animation-name: slideUpAndFade;
+}
+
+[data-side="left"] {
+  animation-name: slideRightAndFade;
+}

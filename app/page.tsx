@@ -19,37 +19,43 @@ export default function Home() {
             src={siteConfig.hero.image}
             alt="Restaurant hero"
             fill
-            className="object-cover brightness-[0.7]"
+            className="object-cover brightness-[0.6]"
             priority
           />
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="relative z-10 text-center px-4"
-        >
-          <h1 className="text-5xl md:text-7xl font-bold mb-8 tracking-tight text-white [text-shadow:_2px_2px_10px_rgb(0_0_0_/_90%)]">
-            {siteConfig.hero.title}
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 font-light leading-relaxed max-w-2xl mx-auto [text-shadow:_1px_1px_2px_rgb(0_0_0_/_60%)] mb-8">
-            {siteConfig.hero.subtitle}
-          </p>
+        <div className="absolute inset-0 flex items-center justify-center">
           <motion.div
-            whileHover={{
-              scale: 1.05,
-            }}
-            whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.5 }}
+            className="text-center text-white px-4 max-w-4xl mx-auto"
           >
-            <Link
-              href={siteConfig.hero.cta.link}
-              className="btn-primary px-8 py-3 rounded-full text-lg font-semibold inline-block transition-all duration-300 relative after:absolute after:inset-0 after:rounded-full after:border-2 after:border-white/0 hover:after:border-white/100 after:transition-all after:duration-300 hover:text-white"
-            >
-              {siteConfig.hero.cta.text}
-            </Link>
+            <h1 className="text-white text-6xl md:text-7xl font-bold mb-8 tracking-tight">
+              {siteConfig.hero.title}
+            </h1>
+            <p className="text-white text-xl md:text-2xl mb-12 max-w-2xl mx-auto font-light">
+              {siteConfig.hero.subtitle}
+            </p>
+            <div className="flex flex-col gap-4 justify-center items-center w-full max-w-xs mx-auto">
+              <Link
+                href={siteConfig.hero.cta[0].link}
+                className="btn-primary px-8 py-3 rounded-full text-base font-semibold w-full text-center shadow-lg hover:shadow-xl hover:scale-105 hover:text-white transition-all duration-200"
+              >
+                {siteConfig.hero.cta[0].text}
+              </Link>
+              <Link
+                href={siteConfig.hero.cta[1].link}
+                className="btn-primary px-8 py-3 rounded-full text-base font-semibold w-full text-center shadow-lg hover:shadow-xl hover:scale-105 hover:text-white transition-all duration-200"
+              >
+                {siteConfig.hero.cta[1].text}
+              </Link>
+            </div>
           </motion.div>
-        </motion.div>
+        </div>
+
+        {/* Decorative overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/30 pointer-events-none" />
       </section>
 
       {/* Featured Section */}

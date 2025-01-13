@@ -33,10 +33,18 @@ export const siteConfig = {
     image: "/pexels-fotios-photos-1024359.jpg",
     title: "Restaurant Name",
     subtitle: "O experiență culinară de neuitat",
-    cta: {
-      text: "Vezi Meniul",
-      link: "/menu",
-    },
+    cta: [
+      {
+        text: "Vezi Meniul",
+        link: "/menu",
+        primary: true,
+      },
+      {
+        text: "Rezervă Acum",
+        link: "/reservations",
+        primary: false,
+      },
+    ],
   },
 
   // Featured specialties
@@ -111,21 +119,50 @@ export const siteConfig = {
             description:
               "Selecție de bruschete cu diverse topinguri mediteraneene",
             price: "32",
+            allergens: ["gluten", "lactose"],
+            dietary: ["vegetarian"],
           },
           {
-            name: "Carpaccio de Vită",
+            name: "Carpaccio di Manzo",
             description: "Felii fine de mușchi de vită cu rucola și parmezan",
             price: "45",
+            allergens: ["lactose"],
           },
           {
-            name: "Burrata con Prosciutto",
-            description: "Burrata cremoasă cu prosciutto și roșii cherry",
+            name: "Antipasto Misto",
+            description: "Selecție de mezeluri italiene, brânzeturi și măsline",
+            price: "52",
+          },
+          {
+            name: "Caprese di Bufala",
+            description: "Mozzarella de bivoliță cu roșii și busuioc proaspăt",
+            price: "38",
+          },
+          {
+            name: "Prosciutto e Melone",
+            description:
+              "Prosciutto crudo cu pepene galben și reducție balsamică",
+            price: "42",
+          },
+          {
+            name: "Insalata di Mare",
+            description: "Fructe de mare marinate cu citrice și ierburi",
             price: "48",
+            isSpicy: true,
+          },
+          {
+            name: "Penne all'Arrabbiata",
+            description: "Paste cu sos picant de roșii și usturoi",
+            price: "42",
+            allergens: ["gluten"],
+            dietary: ["spicy", "vegan"],
           },
           {
             name: "Calamari Fritti",
-            description: "Inele de calamari cu sos aioli și lămâie",
-            price: "38",
+            description: "Inele de calamar pane cu sos aioli",
+            price: "48",
+            allergens: ["gluten", "eggs"],
+            dietary: ["frozen"],
           },
         ],
       },
@@ -136,21 +173,27 @@ export const siteConfig = {
             name: "Spaghetti alle Vongole",
             description: "Spaghete cu scoici, usturoi și vin alb",
             price: "52",
+            allergens: ["gluten", "shellfish"],
           },
           {
             name: "Pappardelle al Ragù",
             description: "Pappardelle cu ragù tradițional de vită",
             price: "48",
+            allergens: ["gluten", "eggs"],
           },
           {
             name: "Risotto ai Funghi Porcini",
             description: "Risotto cremos cu hribi și parmezan",
             price: "54",
+            allergens: ["lactose"],
+            dietary: ["vegetarian"],
           },
           {
             name: "Ravioli di Zucca",
             description: "Ravioli umplut cu dovleac și sos de salvie",
             price: "46",
+            allergens: ["gluten", "eggs", "lactose"],
+            dietary: ["vegetarian"],
           },
         ],
       },
@@ -161,21 +204,26 @@ export const siteConfig = {
             name: "Osso Buco alla Milanese",
             description: "Osso buco tradițional cu risotto șofran",
             price: "85",
+            allergens: ["lactose"],
           },
           {
             name: "Branzino al Forno",
             description: "Biban de mare la cuptor cu legume mediteraneene",
             price: "78",
+            allergens: ["fish"],
+            dietary: ["frozen"],
           },
           {
             name: "Tagliata di Manzo",
             description: "Mușchi de vită cu rucola și parmezan",
             price: "95",
+            allergens: ["lactose"],
           },
           {
             name: "Cotoletta alla Milanese",
             description: "Cotlet de vițel pane cu salată de rucola",
             price: "72",
+            allergens: ["gluten", "eggs", "lactose"],
           },
         ],
       },
@@ -186,21 +234,174 @@ export const siteConfig = {
             name: "Tiramisu Classico",
             description: "Tiramisu tradițional cu mascarpone și cafea",
             price: "32",
+            allergens: ["eggs", "lactose", "gluten"],
           },
           {
             name: "Panna Cotta ai Frutti di Bosco",
             description: "Panna cotta cu fructe de pădure",
             price: "28",
+            allergens: ["lactose"],
+            dietary: ["vegetarian"],
           },
           {
             name: "Cannoli Siciliani",
             description: "Cannoli umplute cu ricotta și pistacchio",
             price: "34",
+            allergens: ["lactose", "gluten", "nuts"],
           },
           {
             name: "Torta al Cioccolato",
             description: "Tort de ciocolată cu înghețată de vanilie",
             price: "30",
+            allergens: ["eggs", "lactose", "gluten"],
+            dietary: ["vegetarian"],
+          },
+        ],
+      },
+      {
+        name: "Aperitive Reci",
+        items: [
+          {
+            name: "Tartare di Tonno",
+            description: "Tartar de ton roșu cu avocado și citrice",
+            price: "58",
+            allergens: ["fish"],
+            dietary: ["frozen"],
+          },
+          {
+            name: "Vitello Tonnato",
+            description: "Felii fine de vițel cu sos de ton și capere",
+            price: "46",
+            allergens: ["fish", "eggs"],
+          },
+          {
+            name: "Insalata di Mare",
+            description:
+              "Salată de fructe de mare cu citrice și ierburi aromate",
+            price: "52",
+            allergens: ["shellfish", "fish"],
+            dietary: ["frozen"],
+          },
+        ],
+      },
+      {
+        name: "Aperitive Calde",
+        items: [
+          {
+            name: "Polpette al Sugo",
+            description: "Chifteluțe italienești în sos de roșii",
+            price: "38",
+            allergens: ["gluten", "eggs"],
+          },
+          {
+            name: "Melanzane alla Parmigiana",
+            description: "Vinete gratinate cu mozzarella și parmezan",
+            price: "42",
+            allergens: ["lactose"],
+            dietary: ["vegetarian"],
+          },
+          {
+            name: "Gamberi all'Aglio",
+            description: "Creveți trași în unt cu usturoi și vin alb",
+            price: "56",
+            allergens: ["shellfish", "lactose"],
+            dietary: ["frozen"],
+          },
+        ],
+      },
+      {
+        name: "Supe și Creme",
+        items: [
+          {
+            name: "Zuppa di Pesce",
+            description: "Supă tradițională de pește și fructe de mare",
+            price: "48",
+            allergens: ["fish", "shellfish"],
+            dietary: ["frozen"],
+          },
+          {
+            name: "Crema di Funghi",
+            description: "Cremă de ciuperci cu trufe și crutoane",
+            price: "36",
+            allergens: ["gluten", "lactose"],
+            dietary: ["vegetarian"],
+          },
+          {
+            name: "Minestrone alla Genovese",
+            description: "Supă de legume cu pesto de busuioc",
+            price: "32",
+            allergens: ["nuts"],
+            dietary: ["vegan"],
+          },
+        ],
+      },
+      {
+        name: "Specialități de Mare",
+        items: [
+          {
+            name: "Grigliata Mista di Pesce",
+            description: "Selecție de pește și fructe de mare la grătar",
+            price: "145",
+            allergens: ["fish", "shellfish"],
+            dietary: ["frozen"],
+          },
+          {
+            name: "Polpo alla Griglia",
+            description: "Caracatiță la grătar cu cartofi și sos de măsline",
+            price: "98",
+            allergens: ["shellfish"],
+            dietary: ["frozen"],
+          },
+          {
+            name: "Salmone al Forno",
+            description: "Somon la cuptor cu sparanghel și sos olandez",
+            price: "88",
+            allergens: ["fish", "eggs", "lactose"],
+            dietary: ["frozen"],
+          },
+        ],
+      },
+      {
+        name: "Specialități din Carne",
+        items: [
+          {
+            name: "Filetto al Pepe Verde",
+            description: "Mușchi de vită cu sos de piper verde",
+            price: "115",
+            allergens: ["lactose"],
+            dietary: ["spicy"],
+          },
+          {
+            name: "Costolette d'Agnello",
+            description:
+              "Cotlete de miel cu ierburi aromate și legume la grătar",
+            price: "98",
+          },
+          {
+            name: "Anatra all'Arancia",
+            description: "Piept de rață cu sos de portocale și risotto",
+            price: "92",
+            allergens: ["lactose"],
+          },
+        ],
+      },
+      {
+        name: "Deserturi Speciale",
+        items: [
+          {
+            name: "Soufflé al Cioccolato",
+            description: "Sufleu de ciocolată cu înghețată de vanilie",
+            price: "38",
+          },
+          {
+            name: "Millefoglie",
+            description: "Foietaj cu cremă de vanilie și fructe de pădure",
+            price: "36",
+          },
+          {
+            name: "Semifreddo alle Mandorle",
+            description: "Semifreddo cu migdale caramelizate și sos de caramel",
+            price: "34",
           },
         ],
       },
@@ -268,7 +469,34 @@ export const siteConfig = {
         description:
           "Cu peste 15 ani de experiență în bucătăria internațională",
       },
-      // Add more team members...
+      {
+        name: "Maria Ionescu",
+        role: "Chef Patiser",
+        image: "/chef-2.jpg",
+        description:
+          "Specializată în deserturi italiene și franceze, cu experiență în restaurante cu stele Michelin",
+      },
+      {
+        name: "Alexandru Dumitrescu",
+        role: "Sommelier",
+        image: "/chef-3.jpg",
+        description:
+          "Expert în vinuri cu certificare internațională și pasiune pentru vinurile românești premium",
+      },
+      {
+        name: "Elena Radu",
+        role: "Manager Restaurant",
+        image: "/chef-4.jpg",
+        description:
+          "Coordonează echipa cu profesionalism și dedicare de peste 10 ani",
+      },
+      {
+        name: "Cristian Stancu",
+        role: "Sous Chef",
+        image: "/chef-5.jpg",
+        description:
+          "Specializat în bucătăria mediteraneană și fusion, cu experiență internațională",
+      },
     ],
   },
 
